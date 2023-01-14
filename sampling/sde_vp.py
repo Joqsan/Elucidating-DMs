@@ -63,3 +63,11 @@ class VPSampler(DeterministicEulerSampler):
     def _get_exponent_derivative(self, i):
         t_i = self.timesteps[i]
         return self.beta_d * t_i + self.beta_min
+
+    def step(
+        self,
+        i: Union[int, torch.Tensor],
+        denoised_output_i: torch.Tensor,
+        x_i: torch.Tensor,
+    ):
+        return super().step(i, denoised_output_i, x_i)

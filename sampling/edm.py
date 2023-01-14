@@ -49,3 +49,11 @@ class EDMSampler(StochasticModifiedEulerSampler):
 
     def _get_scale_derivative(self, i):
         return 0.0
+
+    def step(
+        self,
+        i: Union[int, torch.Tensor],
+        denoised_output_i: torch.Tensor,
+        x_i: torch.Tensor,
+    ):
+        return super().step(i, denoised_output_i, x_i)
